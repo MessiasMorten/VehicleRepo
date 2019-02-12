@@ -27,6 +27,7 @@ public class VehicleTest {
     }
   
   }
+	 
 
   private void menuLoop() throws IOException, CloneNotSupportedException {
     Scanner scan = new Scanner(System.in);
