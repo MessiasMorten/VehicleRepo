@@ -1,5 +1,6 @@
 package oblig2;
 
+import java.util.Calendar;
 import java.util.Scanner;
 
 public abstract class Vehicle {
@@ -8,12 +9,21 @@ private String colour;
 private String name;
 private String serialNumber;
 
+public Calendar getBuyingDate() {
+	return buyingDate;
+}
+
+public void setBuyingDate(Calendar buyingDate) {
+	this.buyingDate = buyingDate;
+}
 private int model;
 private int price;
 private static int direction;
 
 private double speed;
 
+//Vehicle pt.2
+Calendar buyingDate = Calendar.getInstance();
 
 Scanner input = new Scanner(System.in);
 

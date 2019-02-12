@@ -1,8 +1,14 @@
 package oblig2;
 
+import java.util.Calendar;
+
 public class Car extends Vehicle{
-private static int power;
 	
+private static int power;
+
+//Vehicle pt.2
+Calendar productionDate = Calendar.getInstance();
+
 public Car() {
 	
 }
@@ -20,6 +26,14 @@ public void setAllFields() {
 
 public static int getPower() {
 	return power;
+}
+
+public Calendar getProductionDate() {
+	return productionDate;
+}
+
+public void setProductionDate(Calendar productionDate) {
+	this.productionDate = productionDate;
 }
 
 public void setPower(int power) {

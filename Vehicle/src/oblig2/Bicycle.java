@@ -1,9 +1,15 @@
 package oblig2;
 
+import java.util.Calendar;
+
 public class Bicycle extends Vehicle {
 
 	private static int gears;
-
+	
+	//Vehicle pt.2
+	Calendar productionDate = Calendar.getInstance();
+	
+	
 public Bicycle() {
 	
 }
@@ -15,6 +21,14 @@ public Bicycle(String colour, String name, String serialNumber, int model, int p
 }
 	
 	
+public Calendar getProductionDate() {
+	return productionDate;
+}
+
+public void setProductionDate(Calendar productionDate) {
+	this.productionDate = productionDate;
+}
+
 @Override
 public void setAllFields() {
 	super.setAllFields();
