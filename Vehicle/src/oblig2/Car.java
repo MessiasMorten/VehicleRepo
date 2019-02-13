@@ -1,20 +1,21 @@
 package oblig2;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Car extends Vehicle{
 	
 private static int power;
 
 //Vehicle pt.2
-Calendar productionDate = Calendar.getInstance();
+static Calendar productionDate = new GregorianCalendar(2019, 1, 12);
 
 public Car() {
 	
 }
 
-public Car(String colour, String name, String serialNumber, int model, int price, int direction, int power){
-setColour(colour); setName(name); setSerialNumber(serialNumber); setModel(model); setPrice(price); setDirection(direction); setPower(power);
+public Car(String colour, String name, String serialNumber, int model, int price, int direction, int power, Calendar productionDate){
+setColour(colour); setName(name); setSerialNumber(serialNumber); setModel(model); setPrice(price); setDirection(direction); setPower(power);setProductionDate(productionDate);
 }
 
 
@@ -28,12 +29,14 @@ public static int getPower() {
 	return power;
 }
 
-public Calendar getProductionDate() {
-	return productionDate;
-}
+
 
 public void setProductionDate(Calendar productionDate) {
-	this.productionDate = productionDate;
+	Car.productionDate = productionDate;
+}
+
+public static String getProductionDate() {
+return String.format("%tF", productionDate);
 }
 
 public void setPower(int power) {
@@ -66,6 +69,14 @@ public void turnLeft(int degrees) {
 
 public String toString() {
 	return "Name of vehicle: " + getName() + "\nColour: " + getColour() + " SerialNumber: " + getSerialNumber() + " Model: " + getModel() + " Price: "
-+ getPrice() + " Direction: " + getDirection() + " Power: " + getPower() + "\n" ;}
++ getPrice() + " Direction: " + getDirection() + " Power: " + getPower() + "\n" + "Buying date: " + getBuyingDate() + "\n" ;}
+
+@Override
+public int compareTo(Vehicle arg0) {
+
+
+	
+	return 0;
+}
 
 }

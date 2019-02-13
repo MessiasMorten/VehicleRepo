@@ -1,13 +1,14 @@
 package oblig2;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Bicycle extends Vehicle {
 
 	private static int gears;
 	
 	//Vehicle pt.2
-	Calendar productionDate = Calendar.getInstance();
+	Calendar productionDate = new GregorianCalendar(2019, 1, 12);
 	
 	
 public Bicycle() {
@@ -62,6 +63,14 @@ public void setGears(int gears) {
 
 	public String toString() {
 		return "Name of vehicle: " + getName() + "\nColour: " + getColour() + " SerialNumber: " + getSerialNumber() + " Model: " + getModel() + " Price: "
-	+ getPrice() + " Direction: " + getDirection() + " Gears: " + getGears() + "\n" ;}
+	+ getPrice() + " Direction: " + getDirection() + " Gears: " + getGears() + "\n"  + "Buying date: " + getBuyingDate() + "\n" ;}
+
+	@Override
+	public int compareTo(Vehicle o) {
+
+
+		
+		return 0;
+	}
 	
 }

@@ -1,21 +1,21 @@
 package oblig2;
 
+
 import java.util.Calendar;
 import java.util.Scanner;
 
-public abstract class Vehicle {
+public abstract class Vehicle implements Comparable<Vehicle> , Cloneable {
 	
 private String colour;
 private String name;
 private String serialNumber;
 
-public Calendar getBuyingDate() {
-	return buyingDate;
+public String getBuyingDate() {
+return String.format("%tF", buyingDate);
 }
 
-public void setBuyingDate(Calendar buyingDate) {
-	this.buyingDate = buyingDate;
-}
+
+
 private int model;
 private int price;
 private static int direction;
@@ -23,7 +23,7 @@ private static int direction;
 private double speed;
 
 //Vehicle pt.2
-Calendar buyingDate = Calendar.getInstance();
+static Calendar buyingDate = Calendar.getInstance();
 
 Scanner input = new Scanner(System.in);
 
@@ -87,10 +87,19 @@ public void setSpeed(double speed) {
 	this.speed = speed;
 }
 
-public Vehicle(String colour, String name, String serialNumber, int model, int price, int direction) {
-	this.colour = colour; this.name = name; this.serialNumber = serialNumber; this.model = model; this.price = price; Vehicle.direction = direction;
+public Vehicle(String colour, String name, String serialNumber, int model, int price, int direction, Calendar buyingDate) {
+
+	buyingDate.add(Calendar.DATE, 0);
+	
+	
+	this.colour = colour; this.name = name; this.serialNumber = serialNumber; this.model = model; this.price = price; Vehicle.direction = direction; setBuyingDate(buyingDate); 
 }
 
+
+
+public static void setBuyingDate(Calendar buyingDate) {
+	Vehicle.buyingDate = buyingDate;
+}
 
 public void setAllFields() {
 
@@ -104,6 +113,7 @@ public void setAllFields() {
 	setModel(input.nextInt()); 
 	System.out.println("Price: ");
 	setPrice(input.nextInt());
+	
 	setDirection(0);
 	setSpeed(0);
 	}
