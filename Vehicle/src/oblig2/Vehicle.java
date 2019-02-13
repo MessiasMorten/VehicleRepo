@@ -14,6 +14,15 @@ public String getBuyingDate() {
 return String.format("%tF", buyingDate);
 }
 
+public interface Driveable {
+	double MAX_SPEED_CAR = 250.00;
+	double MAX_SPEED_BIKE = 100.00;
+	
+	void accelerate(int speedFactor);
+	void breaks(int speedFactor);
+	void stop();
+}
+
 
 
 private int model;
@@ -105,7 +114,10 @@ public Vehicle(String colour, String name, String serialNumber, int model, int p
 	this.colour = colour; this.name = name; this.serialNumber = serialNumber; this.model = model; this.price = price; Vehicle.direction = direction; setBuyingDate(buyingDate); 
 }
 
-
+public void stop() {
+	setSpeed(0);
+	System.out.println("The vehicle stopped. Speed is now " + getSpeed() + "\n");
+}
 
 public void setBuyingDate(Calendar buyingDate) {
 	this.buyingDate = buyingDate;

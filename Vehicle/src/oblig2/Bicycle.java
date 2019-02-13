@@ -3,6 +3,7 @@ package oblig2;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+
 public class Bicycle extends Vehicle {
 
 	private static int gears;
@@ -61,6 +62,36 @@ public void setGears(int gears) {
 		
 	}
 
+public void accelerate(int speedFactor)	{
+	
+	if (getSpeed() == 0) {
+		double newspeed = 0.3*speedFactor;
+		if (newspeed >= Driveable.MAX_SPEED_BIKE) {
+			setSpeed(100);
+		}
+		else if (newspeed < Driveable.MAX_SPEED_BIKE) {
+			setSpeed(newspeed);
+		}
+	}
+	else if (getSpeed() != 0) {
+		double newspeed = getSpeed()* 0.5 *speedFactor;
+		if (newspeed >= Driveable.MAX_SPEED_BIKE) {
+			setSpeed(100);
+		}
+		else if (newspeed < Driveable.MAX_SPEED_BIKE) {
+			setSpeed(newspeed);
+		}
+	}
+	System.out.println("Vehicle accelerated to: " + getSpeed() + " km/h");
+}
+
+public void breaks(int speedFactor) {
+	setSpeed(getSpeed()/(speedFactor*0.5));
+	System.out.println("Vehicle slowed down to: " + getSpeed() + " km/h");
+}
+	
+	
+	
 	public String toString() {
 		return "Name of vehicle: " + getName() + "\nColour: " + getColour() + " SerialNumber: " + getSerialNumber() + " Model: " + getModel() + " Price: "
 	+ getPrice() + " Direction: " + getDirection() + " Gears: " + getGears() + "\n"  + "Buying date: " + getBuyingDate() + "\n" ;}

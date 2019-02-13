@@ -45,7 +45,8 @@ public class VehicleTest {
       System.out.println("4..............Show data about all vehicles");
       System.out.println("5.......Change direction of a given vehicle");
       System.out.println("6.........................Test clone method");
-      System.out.println("7..............................Exit program");
+      System.out.println("7...................Test drivable interface");
+      System.out.println("8..............................Exit program");
       System.out.println("...............................Your choice?");
       int choice = scan.nextInt();
 
@@ -128,17 +129,28 @@ public class VehicleTest {
         break;
         }
       case 6:
-    	  
-    	cloning();  
-    	  
-    	  
-    	 
-    	  
-    	  
-    	  
-    	  
+    	cloning();
     	  break;
+    	  
       case 7:
+    	  
+    	Car driveableCar = new Car("Black","driveableCar","1010-11",2010,85000,163,120,vehicle.buyingDate);
+    	Bicycle driveableBike = new Bicycle("Pink","driveableBike","F11/42",1994,5000,10,21,bike.buyingDate);
+    	
+    	System.out.println("Car:");
+    	driveableCar.accelerate(10);
+    	driveableCar.accelerate(5000);
+    	driveableCar.breaks(10);
+    	driveableCar.stop();
+    	
+    	System.out.println("Bike:");
+    	driveableBike.accelerate(10);
+    	driveableBike.accelerate(5000);
+    	driveableBike.breaks(10);
+    	driveableBike.stop();
+    	
+    	  break;
+      case 8:
       	scan.close();
         System.exit(0);
         break;
@@ -150,7 +162,7 @@ public class VehicleTest {
 
 public void cloning() {
 	Vehicle vehicle = new Car();
-	Vehicle obj1 = new Car("Black","Volvo","1010-11",2010,85000,163,120,vehicle.buyingDate);
+	Vehicle obj1 = new Car("Black","Volvoragger","1010-11",2010,85000,163,120,vehicle.buyingDate);
 	
 
 		Vehicle deepcopy = (Vehicle) obj1.clone();

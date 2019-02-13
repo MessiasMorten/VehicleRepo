@@ -67,6 +67,34 @@ public void turnLeft(int degrees) {
 	}
 }
 
+//Vehicle pt.3
+public void accelerate(int speedFactor) {
+	if (getSpeed() == 0) {
+		double newspeed = 0.5*speedFactor;
+		if (newspeed >= Driveable.MAX_SPEED_CAR) {
+			setSpeed(250);
+		}
+		else if (newspeed < Driveable.MAX_SPEED_CAR) {
+			setSpeed(newspeed);
+		}
+	}
+	else if (getSpeed() != 0) {
+		double newspeed = getSpeed()*speedFactor;
+		if (newspeed >= Driveable.MAX_SPEED_CAR) {
+			setSpeed(250);
+		}
+		else if (newspeed < Driveable.MAX_SPEED_CAR) {
+			setSpeed(getSpeed()*speedFactor);
+		}
+	}
+	System.out.println("Vehicle accelerated to: " + getSpeed() + " km/h");
+}
+
+public void breaks (int speedFactor) {
+	setSpeed(getSpeed() / (speedFactor * 0.5));
+	System.out.println("Vehicle slowed down to: " + getSpeed() + " km/h");
+}
+
 public String toString() {
 	return "Name of vehicle: " + getName() + "\nColour: " + getColour() + " SerialNumber: " + getSerialNumber() + " Model: " + getModel() + " Price: "
 + getPrice() + " Direction: " + getDirection() + " Power: " + getPower() + "\n" + "Buying date: " + getBuyingDate() + "\n" ;}
