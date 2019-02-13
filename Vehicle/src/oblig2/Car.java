@@ -14,8 +14,8 @@ public Car() {
 	
 }
 
-public Car(String colour, String name, String serialNumber, int model, int price, int direction, int power, Calendar productionDate){
-setColour(colour); setName(name); setSerialNumber(serialNumber); setModel(model); setPrice(price); setDirection(direction); setPower(power);setProductionDate(productionDate);
+public Car(String colour, String name, String serialNumber, int model, int price, int direction, int power, Calendar buyingDate){
+setColour(colour); setName(name); setSerialNumber(serialNumber); setModel(model); setPrice(price); setDirection(direction); setPower(power);setProductionDate(buyingDate);
 }
 
 
@@ -72,11 +72,16 @@ public String toString() {
 + getPrice() + " Direction: " + getDirection() + " Power: " + getPower() + "\n" + "Buying date: " + getBuyingDate() + "\n" ;}
 
 @Override
-public int compareTo(Vehicle arg0) {
-
-
-	
-	return 0;
+public int compareTo(Vehicle obj) {
+	if (getPrice() > obj.getPrice()) {
+		return 1;
+	}
+	else if (getPrice() < obj.getPrice()) {
+		return -1;
+	}
+	else {
+		return 0;
+	}
 }
 
 }

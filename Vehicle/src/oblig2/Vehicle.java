@@ -22,10 +22,20 @@ private static int direction;
 
 private double speed;
 
-//Vehicle pt.2
-static Calendar buyingDate = Calendar.getInstance();
+Calendar buyingDate = Calendar.getInstance();
+
 
 Scanner input = new Scanner(System.in);
+
+
+@Override
+public Object clone() {
+    try {
+        return (Vehicle) super.clone();
+    } catch (CloneNotSupportedException e) {
+    	return "Program throws CloneNotSupportedException";
+    }
+}
 
 public Vehicle() {
 	
@@ -97,8 +107,8 @@ public Vehicle(String colour, String name, String serialNumber, int model, int p
 
 
 
-public static void setBuyingDate(Calendar buyingDate) {
-	Vehicle.buyingDate = buyingDate;
+public void setBuyingDate(Calendar buyingDate) {
+	this.buyingDate = buyingDate;
 }
 
 public void setAllFields() {

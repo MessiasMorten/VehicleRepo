@@ -31,11 +31,12 @@ public class VehicleTest {
 
   private void menuLoop() throws IOException, CloneNotSupportedException {
     Scanner scan = new Scanner(System.in);
-    
-    arr.add(new Car("Black","Volvo","1010-11",2010,85000,163,120,Car.buyingDate));
-    arr.add(new Bicycle("Yellow","Scott Spark 290","BC100",2018,38000,10,11));
-    arr.add(new Car("Red","Ferrari Testarossa","A112", 1993,1200000,350,122,Car.buyingDate));
-    arr.add(new Bicycle("Pink","DBS","F11/42",1994,5000,10,21)); 
+    Vehicle vehicle = new Car();
+    Vehicle bike = new Bicycle();
+    arr.add(new Car("Black","Volvo","1010-11",2010,85000,163,120,vehicle.buyingDate));
+    arr.add(new Bicycle("Yellow","Scott Spark 290","BC100",2018,38000,10,11,bike.buyingDate));
+    arr.add(new Car("Red","Ferrari Testarossa","A112", 1993,1200000,350,122,vehicle.buyingDate));
+    arr.add(new Bicycle("Pink","DBS","F11/42",1994,5000,10,21,bike.buyingDate)); 
 
     while(true) {
       System.out.println("1...................................New car");
@@ -43,22 +44,20 @@ public class VehicleTest {
       System.out.println("3......................Find vehicle by name");
       System.out.println("4..............Show data about all vehicles");
       System.out.println("5.......Change direction of a given vehicle");
-      System.out.println("6..............................Exit program");
+      System.out.println("6.........................Test clone method");
+      System.out.println("7..............................Exit program");
       System.out.println("...............................Your choice?");
-      System.out.println(Car.getProductionDate());
       int choice = scan.nextInt();
 
       switch (choice) {
       case 1:
-    	 Vehicle vehicle = new Car();
     	  vehicle.setAllFields();  
-    	  arr.add(new Car(vehicle.getColour(), vehicle.getName(),vehicle.getSerialNumber(), vehicle.getModel(), vehicle.getPrice(), Car.getDirection(),Car.getPower(),Car.buyingDate ));
+    	  arr.add(new Car(vehicle.getColour(), vehicle.getName(),vehicle.getSerialNumber(), vehicle.getModel(), vehicle.getPrice(), Car.getDirection(),Car.getPower(),vehicle.buyingDate ));
     	  
         break;
       case 2:
-    	  Vehicle bike = new Bicycle();
     	  bike.setAllFields();  
-    	  arr.add(new Bicycle (bike.getColour(), bike.getName(),bike.getSerialNumber(), bike.getModel(), bike.getPrice(),Bicycle.getDirection(),Bicycle.getGears()));
+    	  arr.add(new Bicycle (bike.getColour(), bike.getName(),bike.getSerialNumber(), bike.getModel(), bike.getPrice(),Bicycle.getDirection(),Bicycle.getGears(), bike.buyingDate));
         break;
       case 3:
     	  System.out.println("Input vehicle name: ");
@@ -129,6 +128,17 @@ public class VehicleTest {
         break;
         }
       case 6:
+    	  
+    	cloning();  
+    	  
+    	  
+    	 
+    	  
+    	  
+    	  
+    	  
+    	  break;
+      case 7:
       	scan.close();
         System.exit(0);
         break;
@@ -137,4 +147,25 @@ public class VehicleTest {
       }
     }
   }
+
+public void cloning() {
+	Vehicle vehicle = new Car();
+	Vehicle obj1 = new Car("Black","Volvo","1010-11",2010,85000,163,120,vehicle.buyingDate);
+	
+
+		Vehicle deepcopy = (Vehicle) obj1.clone();
+		System.out.println("Dates before change: \nNew car: " + obj1.getBuyingDate() + "\nDeep copy: " + deepcopy.getBuyingDate() + "\n");
+		
+		Calendar newdate = Calendar.getInstance();
+		newdate.add(Calendar.DATE, -15);
+		
+		
+		
+		deepcopy.setBuyingDate(newdate);
+	
+		System.out.println("Dates after change: \nNew car: " + obj1.getBuyingDate() + "\nDeep copy: " + deepcopy.getBuyingDate()+"\n");
+
+	
+}
+
 }

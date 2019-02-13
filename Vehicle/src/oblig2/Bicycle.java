@@ -15,9 +15,9 @@ public Bicycle() {
 	
 }
 
-public Bicycle(String colour, String name, String serialNumber, int model, int price, int direction, int gears) {
+public Bicycle(String colour, String name, String serialNumber, int model, int price, int direction, int gears, Calendar buyingDate) {
 	
-	setColour(colour); setName(name); setSerialNumber(serialNumber); setModel(model); setPrice(price); setDirection(direction); setGears(gears);
+	setColour(colour); setName(name); setSerialNumber(serialNumber); setModel(model); setPrice(price); setDirection(direction); setGears(gears); setBuyingDate(buyingDate);
 
 }
 	
@@ -66,11 +66,16 @@ public void setGears(int gears) {
 	+ getPrice() + " Direction: " + getDirection() + " Gears: " + getGears() + "\n"  + "Buying date: " + getBuyingDate() + "\n" ;}
 
 	@Override
-	public int compareTo(Vehicle o) {
-
-
-		
-		return 0;
+	public int compareTo(Vehicle obj) {
+		if (getPrice() > obj.getPrice()) {
+			return 1;
+		}
+		else if (getPrice() < obj.getPrice()) {
+			return -1;
+		}
+		else {
+			return 0;
+		}
 	}
 	
 }
